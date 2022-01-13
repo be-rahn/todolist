@@ -29,20 +29,24 @@ function App() {
   };
   return (
     <>
-      {todos.map((todo, i) => (
-        <div className="todo" key={i} id={i} onClick={removeTodo}>
-          {todo.text}
+      <div className="app">
+        <div className="todo-list">
+          {todos.map((todo, i) => (
+            <div className="todo" key={i} id={i} onClick={removeTodo}>
+              {todo.text}
+            </div>
+          ))}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="input"
+              value={value}
+              placeholder="Add Todo ..."
+              onChange={(e) => setValue(e.target.value)}
+            />
+          </form>
         </div>
-      ))}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="input"
-          value={value}
-          placeholder="Add Todo ..."
-          onChange={(e) => setValue(e.target.value)}
-        />
-      </form>
+      </div>
     </>
   );
 }
